@@ -3,7 +3,8 @@ import {  Divider, Row, Col } from 'antd';
 import TopCard from './TopCard';
 import PreviewState from './PreviewState';
 
-import {  Statistic, Progress, Tag } from 'antd';
+import {  Statistic, Progress } from 'antd';
+import {dashboardTable} from '../../mock'
 
 import { ArrowUpOutlined } from '@ant-design/icons';
 
@@ -11,32 +12,6 @@ import { DashboardLayout } from '../../layout';
 import RecentTable from '../../components/RecentTable';
 
 export default function Dashboard() {
-  const dataTableColumns = [
-    {
-      title: 'N#',
-      dataIndex: 'number',
-    },
-    {
-      title: 'Client',
-      dataIndex: ['client', 'company'],
-    },
-
-    {
-      title: 'Total',
-      dataIndex: 'total',
-
-      render: (total) => `$ ${total}`.replace(/\B(?=(\d{3})+(?!\d))/g, ' '),
-    },
-    {
-      title: 'Status',
-      dataIndex: 'status',
-      render: (status) => {
-        let color = status === 'Draft' ? 'volcano' : 'green';
-
-        return <Tag color={color}>{status.toUpperCase()}</Tag>;
-      },
-    },
-  ];
 
   return (
     <DashboardLayout>
@@ -172,7 +147,7 @@ export default function Dashboard() {
             >
               <h3 style={{ color: '#22075e', marginBottom: 30 }}>Customer Preview</h3>
 
-              <Progress type="dashboard" percent={25} width={148} />
+              <Progress type="dashboard" percent={25} size={148} />
               <p>New Customer this Month</p>
               <Divider />
               <Statistic
@@ -201,7 +176,7 @@ export default function Dashboard() {
               <h3 style={{ color: '#22075e', marginBottom: 5 }}>Recent Invoices</h3>
             </div>
 
-            <RecentTable entity={'invoice'} dataTableColumns={dataTableColumns} />
+            <RecentTable entity={'invoice'} dataTableColumns={dashboardTable} />
           </div>
         </Col>
 
@@ -216,7 +191,7 @@ export default function Dashboard() {
             <div className="pad20">
               <h3 style={{ color: '#22075e', marginBottom: 5 }}>Recent Quotes</h3>
             </div>
-            <RecentTable entity={'quote'} dataTableColumns={dataTableColumns} />
+            <RecentTable entity={'quote'} dataTableColumns={dashboardTable} />
           </div>
         </Col>
       </Row>

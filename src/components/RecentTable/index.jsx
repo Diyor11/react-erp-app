@@ -32,7 +32,7 @@ export default function RecentTable({ ...props }) {
     {
       title: '',
       render: (row) => (
-        <Dropdown overlay={DropDownRowMenu({ row })} trigger={['click']}>
+        <Dropdown menu={DropDownRowMenu({ row })} trigger={['click']}>
           <EllipsisOutlined style={{ cursor: 'pointer', fontSize: '24px' }} />
         </Dropdown>
       ),

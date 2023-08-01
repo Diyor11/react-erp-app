@@ -34,7 +34,7 @@ export default function DataTable({ config, DataTableDropMenu }) {
     {
       title: '',
       render: (row) => (
-        <Dropdown overlay={DataTableDropMenu({ row, entity })} trigger={['click']}>
+        <Dropdown menu={DataTableDropMenu({ row, entity })} trigger={['click']}>
           <EllipsisOutlined style={{ cursor: 'pointer', fontSize: '24px' }} />
         </Dropdown>
       ),

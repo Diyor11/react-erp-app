@@ -74,7 +74,7 @@ export default function HeaderContent() {
   );
   return (
     <div className="headerIcon" style={{ position: 'absolute', right: 0, zIndex: '99' }}>
-      <Dropdown overlay={profileDropdown} trigger={['click']} placement="bottomRight">
+      <Dropdown menu={profileDropdown} trigger={['click']} placement="bottomRight">
         {/* <Badge dot> */}
         <Avatar className="last" src={photo} />
         {/* </Badge> */}

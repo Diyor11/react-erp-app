@@ -2,6 +2,7 @@ import React from 'react';
 
 import CrudModule from '../modules/CrudModule';
 import CustomerForm from '../forms/CustomerForm';
+import {customerTable as dataTableColumns, customerRead } from '../mock'
 
 function Customer() {
   const entity = 'client';
@@ -12,47 +13,6 @@ function Customer() {
   };
 
   const entityDisplayLabels = ['company'];
-
-  const readColumns = [
-    {
-      title: 'Company',
-      dataIndex: 'company',
-    },
-    {
-      title: 'Manager Surname',
-      dataIndex: 'managerSurname',
-    },
-    {
-      title: 'Manager Name',
-      dataIndex: 'managerName',
-    },
-    {
-      title: 'Email',
-      dataIndex: 'email',
-    },
-    {
-      title: 'Phone',
-      dataIndex: 'phone',
-    },
-  ];
-  const dataTableColumns = [
-    {
-      title: 'Company',
-      dataIndex: 'company',
-    },
-    {
-      title: 'Manager Surname',
-      dataIndex: 'managerSurname',
-    },
-    {
-      title: 'Manager Name',
-      dataIndex: 'managerName',
-    },
-    {
-      title: 'Email',
-      dataIndex: 'email',
-    },
-  ];
 
   const ADD_NEW_ENTITY = 'Add new customer';
   const DATATABLE_TITLE = 'customers List';
@@ -69,7 +29,7 @@ function Customer() {
     ADD_NEW_ENTITY,
     UPDATE_ENTITY,
     DATATABLE_TITLE,
-    readColumns,
+    readColumns: customerRead,
     dataTableColumns,
     searchConfig,
     entityDisplayLabels,
