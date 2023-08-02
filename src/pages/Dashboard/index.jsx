@@ -1,7 +1,5 @@
 import React from 'react';
 import {  Divider, Row, Col } from 'antd';
-import TopCard from './TopCard';
-import PreviewState from './PreviewState';
 
 import {  Statistic, Progress } from 'antd';
 import {dashboardTable} from '../../mock'
@@ -10,36 +8,49 @@ import { ArrowUpOutlined } from '@ant-design/icons';
 
 import { DashboardLayout } from '../../layout';
 import RecentTable from '../../components/RecentTable';
+import CardList from './CardList';
+import PreViewbox from './PreViewbox';
+
+const cardsData = [
+  {title: 'Invoice', tagColor: 'cyan', prefix: 'This month', tagContent: '34 000 $' },
+  {title: 'Quote', tagColor: 'purple', prefix: 'This month', tagContent: '34 000 $' },
+  {title: 'Payment', tagColor: 'green', prefix: 'This month', tagContent: '34 000 $' },
+  {title: 'Due Balance', tagColor: 'red', prefix: 'Not Paid', tagContent: '34 000 $' },
+]
+
+const previewData = [
+  {title: 'Invoice Preview', states: [
+    {tag: 'Draft', color: 'grey', value: 3},
+    {tag: 'Pending', color: 'bleu', value: 5},
+    {tag: 'Not Paid', color: 'orange', value: 12},
+    {tag: 'Overdue', color: 'red', value: 6},
+    {tag: 'Partially Paid', color: 'cyan', value: 8},
+    {tag: 'Paid', color: 'green', value: 55},
+  ]},
+  {title: 'Quote Preview', states: [
+    {tag: 'Draft', color: 'grey', value: 3},
+    {tag: 'Pending', color: 'bleu', value: 5},
+    {tag: 'Not Paid', color: 'orange', value: 12},
+    {tag: 'Overdue', color: 'red', value: 6},
+    {tag: 'Partially Paid', color: 'cyan', value: 8},
+    {tag: 'Paid', color: 'green', value: 55},
+  ]},
+  {title: 'Offer Preview', states: [
+    {tag: 'Draft', color: 'grey', value: 3},
+    {tag: 'Pending', color: 'bleu', value: 5},
+    {tag: 'Not Paid', color: 'orange', value: 12},
+    {tag: 'Overdue', color: 'red', value: 6},
+    {tag: 'Partially Paid', color: 'cyan', value: 8},
+    {tag: 'Paid', color: 'green', value: 55},
+  ]}
+]
 
 export default function Dashboard() {
 
   return (
     <DashboardLayout>
       <Row gutter={[24, 24]}>
-        <TopCard
-          title={'Invoice'}
-          tagColor={'cyan'}
-          prefix={'This month'}
-          tagContent={'34 000 $'}
-        />
-        <TopCard
-          title={'Quote'}
-          tagColor={'purple'}
-          prefix={'This month'}
-          tagContent={'34 000 $'}
-        />
-        <TopCard
-          title={'Payment'}
-          tagColor={'green'}
-          prefix={'This month'}
-          tagContent={'34 000 $'}
-        />
-        <TopCard
-          title={'Due Balance'}
-          tagColor={'red'}
-          prefix={'Not Paid'}
-          tagContent={'34 000 $'}
-        />
+        <CardList cardsData={cardsData} />
       </Row>
       <div className="space30"></div>
       <Row gutter={[24, 24]}>
@@ -52,80 +63,18 @@ export default function Dashboard() {
         >
           <div className="whiteBox shadow" style={{ minHeight: '380px' }}>
             <Row className="pad10" gutter={[0, 0]}>
-              <Col
-                className="gutter-row"
-                xs={{ span: 24 }}
-                sm={{ span: 24 }}
-                md={{ span: 8 }}
-                lg={{ span: 8 }}
-              >
-                <div className="pad15">
-                  <h3
-                    style={{
-                      color: '#22075e',
-                      marginBottom: 15,
-                    }}
-                  >
-                    Invoice Preview
-                  </h3>
-                  <PreviewState tag={'Draft'} color={'grey'} value={3} />
-                  <PreviewState tag={'Pending'} color={'bleu'} value={5} />
-                  <PreviewState tag={'Not Paid'} color={'orange'} value={12} />
-                  <PreviewState tag={'Overdue'} color={'red'} value={6} />
-                  <PreviewState tag={'Partially Paid'} color={'cyan'} value={8} />
-                  <PreviewState tag={'Paid'} color={'green'} value={55} />
-                </div>
+              {previewData.map((data, index) => (
+                <Col
+                  key={index}
+                  className="gutter-row"
+                  xs={{ span: 24 }}
+                  sm={{ span: 24 }}
+                  md={{ span: 8 }}
+                  lg={{ span: 8 }}
+                >
+                  <PreViewbox {...data} />
               </Col>
-              <Col
-                className="gutter-row"
-                xs={{ span: 24 }}
-                sm={{ span: 24 }}
-                md={{ span: 8 }}
-                lg={{ span: 8 }}
-              >
-                {' '}
-                <div className="pad15">
-                  <h3
-                    style={{
-                      color: '#22075e',
-                      marginBottom: 15,
-                    }}
-                  >
-                    Quote Preview
-                  </h3>
-                  <PreviewState tag={'Draft'} color={'grey'} value={3} />
-                  <PreviewState tag={'Pending'} color={'bleu'} value={5} />
-                  <PreviewState tag={'Not Paid'} color={'orange'} value={12} />
-                  <PreviewState tag={'Overdue'} color={'red'} value={6} />
-                  <PreviewState tag={'Partially Paid'} color={'cyan'} value={8} />
-                  <PreviewState tag={'Paid'} color={'green'} value={55} />
-                </div>
-              </Col>
-              <Col
-                className="gutter-row"
-                xs={{ span: 24 }}
-                sm={{ span: 24 }}
-                md={{ span: 8 }}
-                lg={{ span: 8 }}
-              >
-                {' '}
-                <div className="pad15">
-                  <h3
-                    style={{
-                      color: '#22075e',
-                      marginBottom: 15,
-                    }}
-                  >
-                    Offer Preview
-                  </h3>
-                  <PreviewState tag={'Draft'} color={'grey'} value={3} />
-                  <PreviewState tag={'Pending'} color={'bleu'} value={5} />
-                  <PreviewState tag={'Not Paid'} color={'orange'} value={12} />
-                  <PreviewState tag={'Overdue'} color={'red'} value={6} />
-                  <PreviewState tag={'Partially Paid'} color={'cyan'} value={8} />
-                  <PreviewState tag={'Paid'} color={'green'} value={55} />
-                </div>
-              </Col>
+              ))}
             </Row>
           </div>
         </Col>
@@ -172,11 +121,7 @@ export default function Dashboard() {
           lg={{ span: 12 }}
         >
           <div className="whiteBox shadow">
-            <div className="pad20">
-              <h3 style={{ color: '#22075e', marginBottom: 5 }}>Recent Invoices</h3>
-            </div>
-
-            <RecentTable entity={'invoice'} dataTableColumns={dashboardTable} />
+            <RecentTable entity={'invoice'} title='Recent Invoices' dataTableColumns={dashboardTable} />
           </div>
         </Col>
 
@@ -188,10 +133,7 @@ export default function Dashboard() {
           lg={{ span: 12 }}
         >
           <div className="whiteBox shadow">
-            <div className="pad20">
-              <h3 style={{ color: '#22075e', marginBottom: 5 }}>Recent Quotes</h3>
-            </div>
-            <RecentTable entity={'quote'} dataTableColumns={dashboardTable} />
+            <RecentTable entity={'quote'} title='Recent Quotes' dataTableColumns={dashboardTable} />
           </div>
         </Col>
       </Row>

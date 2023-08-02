@@ -26,7 +26,7 @@ function DropDownRowMenu({ row }) {
 }
 
 export default function RecentTable({ ...props }) {
-  let { entity, dataTableColumns } = props;
+  let { entity, dataTableColumns, title } = props;
   dataTableColumns = [
     ...dataTableColumns,
     {
@@ -49,6 +49,9 @@ export default function RecentTable({ ...props }) {
   };
   return (
     <>
+      <div className="pad20">
+        <h3 className='recent-box__title'>{title}</h3>
+      </div>
       <Table
         columns={dataTableColumns}
         rowKey={(item) => item._id}

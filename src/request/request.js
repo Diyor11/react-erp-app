@@ -5,7 +5,7 @@ import errorHandler from './errorHandler';
 import successHandler from './successHandler';
 
 axios.defaults.baseURL = API_BASE_URL;
-axios.defaults.withCredentials = true;
+// axios.defaults.withCredentials = true;
 
 const request = {
   create: async ({ entity, jsonData }) => {

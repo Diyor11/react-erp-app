@@ -42,18 +42,18 @@ function SearchItemComponent({ config, onRerender }) {
     return displayLabels.map((x) => optionField[x]).join(' ');
   };
 
-  useEffect(() => {
-    if (debouncedValue != '') {
-      const options = {
-        q: debouncedValue,
-        fields: searchFields,
-      };
-      dispatch(crud.search({ entity, options }));
-    }
-    return () => {
-      cancel();
-    };
-  }, [debouncedValue]);
+  // useEffect(() => {
+  //   if (debouncedValue != '') {
+  //     const options = {
+  //       q: debouncedValue,
+  //       fields: searchFields,
+  //     };
+  //     dispatch(crud.search({ entity, options }));
+  //   }
+  //   return () => {
+  //     cancel();
+  //   };
+  // }, [debouncedValue]);
 
   const onSearch = (searchText) => {
     if (searchText && searchText != '') {
@@ -77,17 +77,17 @@ function SearchItemComponent({ config, onRerender }) {
     readBox.open();
     onRerender();
   };
-  useEffect(() => {
-    if (isSearching.current) {
-      if (isSuccess) {
-        setOptions(result);
-      } else {
-        setSearching(false);
-        setCurrentValue(undefined);
-        setOptions([]);
-      }
-    }
-  }, [isSuccess, result]);
+  // useEffect(() => {
+  //   if (isSearching.current) {
+  //     if (isSuccess) {
+  //       setOptions(result);
+  //     } else {
+  //       setSearching(false);
+  //       setCurrentValue(undefined);
+  //       setOptions([]);
+  //     }
+  //   }
+  // }, [isSuccess, result]);
 
   return (
     <Select
@@ -119,8 +119,8 @@ export default function SearchItem({ config }) {
   const onRerender = () => {
     setState([state + 1]);
   };
-
-  return state.map((comp) => (
-    <SearchItemComponent key={comp} config={config} onRerender={onRerender} />
-  ));
+ return null
+  // return state.map((comp) => (
+    // <SearchItemComponent key={comp} config={config} onRerender={onRerender} />
+  // ));
 }

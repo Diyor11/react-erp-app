@@ -73,3 +73,5 @@
 //   let strDate = Y + M + D + h + m + s;
 //   return strDate;
 // }
+
+export * from './colors'

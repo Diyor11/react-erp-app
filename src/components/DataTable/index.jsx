@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect } from 'react';
-import { Dropdown, Button, Table, Col } from 'antd';
+import { Dropdown, Button, Table } from 'antd';
 import {PageHeader} from '@ant-design/pro-layout'
 
 import { EllipsisOutlined } from '@ant-design/icons';
@@ -33,11 +33,11 @@ export default function DataTable({ config, DropDownRowMenu, AddNewItem }) {
   const handelDataTableLoad = useCallback((pagination) => {
     const options = { page: pagination.current || 1 };
     dispatch(crud.list({ entity, options }));
-  }, []);
+  }, [dispatch, entity]);
 
   useEffect(() => {
     dispatch(crud.list({ entity }));
-  }, []);
+  }, [dispatch, entity]);
 
   return (
     <>

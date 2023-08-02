@@ -44,7 +44,7 @@ export default function SidePanel({ config, topContent, bottomContent, fixHeader
     }
 
     return () => clearTimeout(timer);
-  }, [isPanelClose]);
+  }, [isPanelClose, isNavMenuClose, navMenu]);
 
   const collapsePanel = () => {
     panel.collapse();

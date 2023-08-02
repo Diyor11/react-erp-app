@@ -1,5 +1,5 @@
 import React, { useLayoutEffect, useEffect, useState } from 'react';
-import { Row, Col, Button, Divider } from 'antd';
+import { Row, Col, Button } from 'antd';
 import { PlusOutlined, EditOutlined, DeleteOutlined } from '@ant-design/icons';
 
 import CreateForm from '../../components/CreateForm';
@@ -117,7 +117,7 @@ function CrudModule({ config, createForm, updateForm }) {
 
   useLayoutEffect(() => {
     dispatch(crud.resetState());
-  }, []);
+  }, [dispatch]);
 
   return (
     <CrudLayout

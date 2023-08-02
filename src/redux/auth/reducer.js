@@ -3,7 +3,7 @@ import * as actionTypes from './types';
 const INITIAL_STATE = {
   current: {},
   loading: false,
-  isLoggedIn: true,
+  isLoggedIn: false,
 };
 
 const authReducer = (state = INITIAL_STATE, action) => {

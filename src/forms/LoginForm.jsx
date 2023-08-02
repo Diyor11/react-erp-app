@@ -13,6 +13,7 @@ export default function LoginForm() {
             message: 'Please input your Email!',
           },
         ]}
+        initialValue={'d@gmail.com'}
       >
         <Input
           prefix={<UserOutlined className="site-form-item-icon" />}
@@ -29,6 +30,7 @@ export default function LoginForm() {
             message: 'Please input your Password!',
           },
         ]}
+        initialValue={'12345'}
       >
         <Input.Password
           prefix={<LockOutlined className="site-form-item-icon" />}

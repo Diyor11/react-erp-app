@@ -8,7 +8,7 @@ export const dashboardTable = [
     },
     {
         title: 'Client',
-        dataIndex: ['client', 'company'],
+        dataIndex: 'client',
     },
 
     {

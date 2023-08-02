@@ -35,7 +35,7 @@ const ContentBox = ({ children }) => {
     if (!isNavMenuClose) {
       panel.close();
     }
-  }, [isNavMenuClose]);
+  }, [isNavMenuClose, panel]);
   return (
     <Content
       className="whiteBox shadow"
