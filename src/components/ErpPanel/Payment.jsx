@@ -73,7 +73,7 @@ export default function Payment({ config }) {
             }`}
             ghost={false}
             tags={<Tag color="volcano">{currentErp.status}</Tag>}
-            // subTitle="This is cuurent erp page"
+            subTitle="This is cuurent erp page"
             extra={[
               <Button
                 key={`${uniqueId()}`}

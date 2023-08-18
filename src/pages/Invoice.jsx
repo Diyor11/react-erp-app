@@ -13,8 +13,8 @@ export default function Invoice() {
   };
   const entityDisplayLabels = ['number', 'client.company'];
 
-  const PANEL_TITLE = 'invoice';
-  const dataTableTitle = 'invoices Lists';
+  const PANEL_TITLE = 'Invoice';
+  const dataTableTitle = 'Invoices Lists';
   const ADD_NEW_ENTITY = 'Add new invoice';
   const DATATABLE_TITLE = 'invoices List';
   const ENTITY_NAME = 'invoice';

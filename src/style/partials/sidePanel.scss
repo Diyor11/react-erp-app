@@ -7,3 +7,23 @@
   transition: all 0.3s ease-in-out;
   margin-top: 0;
 }
+
+.current-data{
+  color: #fff;
+}
+
+.current-data_actions {
+  // .action-button.edit{
+  // }
+  .action-button.remove{
+    color: #fff;
+    background-color: #f82424;
+    margin-right: 5px;
+  }
+}
+
+.update .panel-form__item{
+  label{
+    color: #fff;
+  }
+}

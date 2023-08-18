@@ -26,31 +26,34 @@ function AddNewItem({ config }) {
   );
 }
 
-export default function DataTable({ config, DataTableDropMenu }) {
+export default function DataTable({ config, dataTableDropMenu }) {
   let { entity, dataTableColumns } = config;
   const { DATATABLE_TITLE } = config;
+
+  const {erpContextAction} = useErpContext()
+  
+  const dispatch = useDispatch();
   dataTableColumns = [
     ...dataTableColumns,
-    {
-      title: '',
-      render: (row) => (
-        <Dropdown menu={DataTableDropMenu({ row, entity })} trigger={['click']}>
-          <EllipsisOutlined style={{ cursor: 'pointer', fontSize: '24px' }} />
-        </Dropdown>
-      ),
-    },
+    // {
+    //   title: 'Actions',
+    //   render: (row) => (
+    //     <Dropdown menu={dataTableDropMenu({ row, entity, dispatch, erpContextAction })} trigger={['click']}>
+    //       <EllipsisOutlined style={{ cursor: 'pointer', fontSize: '24px' }} />
+    //     </Dropdown>
+    //   ),
+    // },
   ];
 
   const { result: listResult, isLoading: listIsLoading } = useSelector(selectListItems);
 
   const { pagination, items } = listResult;
 
-  const dispatch = useDispatch();
 
   const handelDataTableLoad = useCallback((pagination) => {
     const options = { page: pagination.current || 1 };
     dispatch(erp.list({ entity, options }));
-  }, []);
+  }, [dispatch, entity]);
 
   // const handelCurrency = () => {
   //   dispatch(settings.currency({ value: '€' }));
@@ -58,7 +61,7 @@ export default function DataTable({ config, DataTableDropMenu }) {
   // };
   useEffect(() => {
     dispatch(erp.list({ entity }));
-  }, []);
+  }, [dispatch, entity]);
 
   return (
     <>

@@ -8,19 +8,27 @@ import { crud } from '../../redux/crud/actions';
 import { selectListItems } from '../../redux/crud/selectors';
 
 import uniqueId from '../../utils/uinqueId';
+import { useCrudContext } from '../../context/crud';
 
-export default function DataTable({ config, DropDownRowMenu, AddNewItem }) {
+export default function DataTable({ config, dropDownRowMenu, AddNewItem }) {
   let { entity, dataTableColumns, dataTableTitle } = config;
+
+  const { crudContextAction } = useCrudContext();
+  const dispatch = useDispatch();
 
   dataTableColumns = [
     ...dataTableColumns,
     {
-      title: '',
-      render: (row) => (
-        <Dropdown menu={DropDownRowMenu({ row })} trigger={['click']}>
-          <EllipsisOutlined style={{ cursor: 'pointer', fontSize: '24px' }} />
-        </Dropdown>
-      ),
+      title: 'ACtions',
+      render: (row) => {
+        // console.log(row)
+        // {items: [{label: 'show', key: '1'}]}
+        return(
+          <Dropdown menu={dropDownRowMenu(row, crudContextAction, dispatch)} trigger={['click']}>
+            <EllipsisOutlined style={{ cursor: 'pointer', fontSize: '24px' }} />
+          </Dropdown>
+        )
+      },
     },
   ];
 
@@ -28,11 +36,10 @@ export default function DataTable({ config, DropDownRowMenu, AddNewItem }) {
 
   const { pagination, items } = listResult;
 
-  const dispatch = useDispatch();
 
-  const handelDataTableLoad = useCallback((pagination) => {
-    const options = { page: pagination.current || 1 };
-    dispatch(crud.list({ entity, options }));
+  const handelDataTableLoad = useCallback((page) => {
+    const options = { page: page.current|| 1 };
+    dispatch(crud.list({ entity, options}));
   }, [dispatch, entity]);
 
   useEffect(() => {
@@ -46,7 +53,7 @@ export default function DataTable({ config, DropDownRowMenu, AddNewItem }) {
         title={dataTableTitle}
         ghost={false}
         extra={[
-          <Button onClick={handelDataTableLoad} key={`${uniqueId()}`}>
+          <Button onClick={() => handelDataTableLoad(pagination)} key={`${uniqueId()}`}>
             Refresh
           </Button>,
           <AddNewItem key={`${uniqueId()}`} config={config} />,
@@ -61,7 +68,7 @@ export default function DataTable({ config, DropDownRowMenu, AddNewItem }) {
         dataSource={items}
         pagination={pagination}
         loading={listIsLoading}
-        onChange={handelDataTableLoad}
+        onChange={(data) => handelDataTableLoad(data)}
       />
     </>
   );

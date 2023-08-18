@@ -96,9 +96,9 @@ export default function ReadItem({ config }) {
     }
   }, [currentResult]);
 
-  useEffect(() => {
-    console.info('itemslist', itemslist);
-  }, [itemslist]);
+  // useEffect(() => {
+  //   console.info('itemslist', itemslist);
+  // }, [itemslist]);
 
   return (
     <>

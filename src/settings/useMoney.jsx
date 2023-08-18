@@ -33,15 +33,8 @@ const useMoney = () => {
   let amountFormatter = ({ amount = 0 }) => currencyFormat(amount);
 
   let moneyRowFormatter = ({ amount = 0 }) => {
-    return {
-      props: {
-        style: {
-          textAlign: 'right',
-          whiteSpace: 'nowrap',
-        },
-      },
-      children: <>{moneyFormatter({ amount })}</>,
-    };
+  
+    return moneyFormatter({amount})
   };
 
   return {

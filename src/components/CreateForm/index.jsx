@@ -30,7 +30,7 @@ export default function CreateForm({ config, formElements }) {
       dispatch(crud.resetAction({ actionType: 'create' }));
       dispatch(crud.list({ entity }));
     }
-  }, [isSuccess]);
+  }, [isSuccess, dispatch, entity]);
 
   return (
     <Loading isLoading={isLoading}>

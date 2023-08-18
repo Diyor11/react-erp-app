@@ -1,11 +1,11 @@
 import React from 'react';
-import { Button, Form, Input } from 'antd';
+import { Form, Input } from 'antd';
 
 export default function CustomerForm({ isUpdateForm = false }) {
   return (
-    <>
+    <div className={`${isUpdateForm ? 'update':'create'} panel-form`}>
       <Form.Item
-        label="company Name"
+        label="Company Name"
         name="company"
         rules={[
           {
@@ -13,11 +13,12 @@ export default function CustomerForm({ isUpdateForm = false }) {
             message: 'Please input your company name!',
           },
         ]}
+        className='panel-form__item company'
       >
-        <Input />
+        <Input className='company panel-form' />
       </Form.Item>
       <Form.Item
-        label="Sur Name"
+        label="Sure Name"
         name="managerSurname"
         rules={[
           {
@@ -30,6 +31,7 @@ export default function CustomerForm({ isUpdateForm = false }) {
           width: 'calc(50%)',
           paddingRight: '5px',
         }}
+        className='panel-form__item surename'
       >
         <Input />
       </Form.Item>
@@ -47,6 +49,7 @@ export default function CustomerForm({ isUpdateForm = false }) {
           width: 'calc(50%)',
           paddingLeft: '5px',
         }}
+        className='panel-form__item name'
       >
         <Input />
       </Form.Item>
@@ -60,6 +63,7 @@ export default function CustomerForm({ isUpdateForm = false }) {
             message: 'Please input your phone!',
           },
         ]}
+        className='panel-form__item phone'
       >
         <Input />
       </Form.Item>
@@ -76,9 +80,10 @@ export default function CustomerForm({ isUpdateForm = false }) {
             message: 'Please input your E-mail!',
           },
         ]}
+        className='panel-form__item email'
       >
         <Input />
       </Form.Item>
-    </>
+    </div>
   );
 }

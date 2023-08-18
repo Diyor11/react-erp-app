@@ -18,18 +18,18 @@ const Visibility = ({ isVisible, children }) => {
   return <div style={show}>{children}</div>;
 };
 
-export default function ErpPanel({ config, CreateForm, UpdateForm, DataTableDropMenu }) {
+export default function ErpPanel({ config, CreateForm, UpdateForm, dataTableDropMenu }) {
   const dispatch = useDispatch();
   const { state } = useErpContext();
   const { update, read, create, recordPayment, dataTableList, deleteModal } = state;
   useLayoutEffect(() => {
     dispatch(erp.resetState());
-  }, []);
+  }, [dispatch]);
 
   return (
     <>
       <Visibility isVisible={dataTableList.isOpen}>
-        <DataTable config={config} DataTableDropMenu={DataTableDropMenu} />
+        <DataTable config={config} DataTableDropMenu={dataTableDropMenu} />
       </Visibility>
       <Visibility isVisible={read.isOpen}>
         <ReadItem config={config} />

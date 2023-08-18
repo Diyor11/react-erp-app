@@ -47,27 +47,27 @@ function SidePanelTopContent({ config, formElements }) {
 
   const show = isReadBoxOpen || isEditBoxOpen ? { opacity: 1 } : { opacity: 0 };
   return (
-    <>
+    <div className='current-data'>
       <Row style={show}>
         <Col span={13}>
           <p style={{ marginBottom: '10px' }}>{labels}</p>
         </Col>
-        <Col span={11}>
+        <Col span={11} className='current-data_actions'>
           <Button
             onClick={removeItem}
-            type="text"
             icon={<DeleteOutlined />}
             size="small"
-            style={{ float: 'right', marginLeft: '5px' }}
+            type='text'
+            className='action-button remove'
           >
             remove
           </Button>
           <Button
             onClick={editItem}
-            type="text"
             icon={<EditOutlined />}
             size="small"
-            style={{ float: 'right', marginLeft: '0px' }}
+            type='primary'
+            className='action-button edit'
           >
             edit
           </Button>
@@ -80,7 +80,7 @@ function SidePanelTopContent({ config, formElements }) {
       </Row>
       <ReadItem config={config} />
       <UpdateForm config={config} formElements={formElements} />
-    </>
+    </div>
   );
 }
 
@@ -97,7 +97,7 @@ function FixHeaderPanel({ config }) {
     <div className="box">
       <Row gutter={12}>
         <Col className="gutter-row" span={21}>
-          <h1 style={{ fontSize: 20, marginBottom: 20 }}>{config.PANEL_TITLE}</h1>
+          <h1 style={{ fontSize: 20, marginBottom: 20, color: '#fff' }}>{config.PANEL_TITLE}</h1>
         </Col>
       </Row>
       <Row gutter={8}>

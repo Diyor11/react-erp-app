@@ -17,11 +17,12 @@ export default function SelectAsync({
   const asyncList = () => {
     return request.list({ entity });
   };
+
   const { result, isLoading: fetchIsLoading, isSuccess } = useFetch(asyncList);
   useEffect(() => {
     isSuccess ? setOptions(result) : setOptions([]);
     setIsLoading(fetchIsLoading);
-  }, [fetchIsLoading]);
+  }, [fetchIsLoading, result, isSuccess]);
 
   const labels = (optionField) => {
     return displayLabels.map((x) => optionField[x]).join(' ');

@@ -34,6 +34,7 @@ function Customer() {
     searchConfig,
     entityDisplayLabels,
   };
+
   return (
     <CrudModule
       createForm={<CustomerForm />}

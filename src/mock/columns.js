@@ -79,12 +79,12 @@ export const createInviceTable = (moneyRowFormatter) => {
         },
         {
           title: 'Client',
-          dataIndex: ['client', 'company'],
+          dataIndex: 'client',
         },
         {
           title: 'Date',
           dataIndex: 'date',
-          render: (date) => {
+          render: (date) => {            
             return dayjs(date).format('DD/MM/YYYY');
           },
         },
@@ -98,12 +98,17 @@ export const createInviceTable = (moneyRowFormatter) => {
         {
           title: 'Total',
           dataIndex: 'total',
-          render: (amount) => moneyRowFormatter({ amount }),
+          // render: (amount) => moneyRowFormatter({ amount }),
+          render: (data) => {
+            return moneyRowFormatter({amount: data})
+          }
         },
         {
           title: 'Balance',
           dataIndex: 'credit',
-          render: (amount) => moneyRowFormatter({ amount }),
+          render: (amount) => {            
+            return moneyRowFormatter({ amount })
+          },
         },
         {
           title: 'status',

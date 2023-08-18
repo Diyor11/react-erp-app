@@ -45,7 +45,7 @@ export const crud = {
       });
 
       let data = await request.list({ entity, options });
-
+      
       if (data.success === true) {
         const result = {
           items: data.result,
@@ -56,11 +56,13 @@ export const crud = {
             total: parseInt(data.pagination.count, 10),
           },
         };
+        
         dispatch({
           type: actionTypes.REQUEST_SUCCESS,
           keyState: 'list',
           payload: result,
         });
+
       } else {
         dispatch({
           type: actionTypes.REQUEST_FAILED,
@@ -138,7 +140,8 @@ export const crud = {
       });
 
       let data = await request.update({ entity, id, jsonData });
-
+      console.log(data);
+      
       if (data.success === true) {
         dispatch({
           type: actionTypes.REQUEST_SUCCESS,

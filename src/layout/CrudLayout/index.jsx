@@ -18,24 +18,24 @@ const ContentBox = ({ children }) => {
 
   const [isSidePanelClose, setSidePanel] = useState(isPanelClose);
 
-  useEffect(() => {
-    let timer = [];
-    if (isPanelClose) {
-      timer = setTimeout(() => {
-        setSidePanel(isPanelClose);
-      }, 200);
-    } else {
-      setSidePanel(isPanelClose);
-    }
+  // useEffect(() => {
+  //   let timer = [];
+  //   if (isPanelClose) {
+  //     timer = setTimeout(() => {
+  //       setSidePanel(isPanelClose);
+  //     }, 200);
+  //   } else {
+  //     setSidePanel(isPanelClose);
+  //   }
 
-    return () => clearTimeout(timer);
-  }, [isPanelClose]);
+  //   return () => clearTimeout(timer);
+  // }, [isPanelClose]);
 
-  useEffect(() => {
-    if (!isNavMenuClose) {
-      panel.close();
-    }
-  }, [isNavMenuClose, panel]);
+  // useEffect(() => {
+    // if (!isNavMenuClose) {
+    //   panel.close();
+    // }
+  // }, [isNavMenuClose, panel]);
   return (
     <Content
       className="whiteBox shadow"
@@ -70,7 +70,9 @@ export default function CrudLayout({
             fixHeaderPanel={fixHeaderPanel}
           ></SidePanel>
           <Layout>
-            <ContentBox> {children}</ContentBox>
+            <ContentBox>
+              {children}
+            </ContentBox>
           </Layout>
         </Layout>
       </DefaultLayout>

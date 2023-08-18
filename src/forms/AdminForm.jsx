@@ -6,7 +6,6 @@ export default function AdminForm({ isUpdateForm = false }) {
     <>
       <Form.Item
         label="Name"
-        name="name"
         rules={[
           {
             required: true,
@@ -18,7 +17,6 @@ export default function AdminForm({ isUpdateForm = false }) {
       </Form.Item>
       <Form.Item
         label="Surname"
-        name="surname"
         rules={[
           {
             required: true,
@@ -30,7 +28,6 @@ export default function AdminForm({ isUpdateForm = false }) {
       </Form.Item>
       <Form.Item
         label="E-mail"
-        name="email"
         rules={[
           {
             required: true,
@@ -44,7 +41,7 @@ export default function AdminForm({ isUpdateForm = false }) {
       {!isUpdateForm && (
         <Form.Item
           label="Password"
-          name="password"
+          id='password'
           rules={[
             {
               required: true,
@@ -52,12 +49,11 @@ export default function AdminForm({ isUpdateForm = false }) {
             },
           ]}
         >
-          <Input.Password autoComplete="new-password" />
+          <Input.Password id='new-password' autoComplete="new-password" />
         </Form.Item>
       )}
       <Form.Item
         label="Role"
-        name="role"
         rules={[
           {
             required: true,

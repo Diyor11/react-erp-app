@@ -24,43 +24,55 @@ function AddNewItem({ config }) {
     </Button>
   );
 }
-function DropDownRowMenu({ row }) {
-  const dispatch = useDispatch();
-  const { crudContextAction } = useCrudContext();
+function dropDownRowMenu(row, crudContextAction, dispatch) {
   const { panel, collapsedBox, modal, readBox, editBox } = crudContextAction;
-  const item = useSelector(selectItemById(row._id));
-  const Show = () => {
-    dispatch(crud.currentItem({ data: item }));
+  const tableKeys = {show: 'cr-table-show', edit: 'cr-table-edit', delete: 'cr-table-delete'}
+
+  const show = () => {
+    dispatch(crud.currentItem({ data: row }));
     panel.open();
     collapsedBox.open();
     readBox.open();
   };
-  function Edit() {
-    dispatch(crud.currentItem({ data: item }));
-    dispatch(crud.currentAction({ actionType: 'update', data: item }));
+  function edit() {
+    dispatch(crud.currentItem({ data: row }));
+    dispatch(crud.currentAction({ actionType: 'update', data: row }));
     editBox.open();
     panel.open();
     collapsedBox.open();
   }
-  function Delete() {
-    dispatch(crud.currentAction({ actionType: 'delete', data: item }));
+
+  function _delete() {
+    dispatch(crud.currentAction({ actionType: 'delete', data: row }));
     modal.open();
   }
-  return (
-    <Menu style={{ width: 130 }}>
-      <Menu.Item key={`${uniqueId()}`} icon={<EyeOutlined />} onClick={Show}>
-        Show
-      </Menu.Item>
-      <Menu.Item key={`${uniqueId()}`} icon={<EditOutlined />} onClick={Edit}>
-        Edit
-      </Menu.Item>
-      <Menu.Item key={`${uniqueId()}`} icon={<DeleteOutlined />} onClick={Delete}>
-        Delete
-      </Menu.Item>
-    </Menu>
-  );
+
+  const handelClick = (e) => {
+    switch (e.key) {
+      case tableKeys.show:
+        show()
+        break;
+      case tableKeys.edit:
+        edit()
+        break;
+      case tableKeys.delete:
+        _delete()
+        break;
+      default:
+        break;
+    }
+  }
+
+  return {
+    items: [
+      {icon: <EyeOutlined />, key: tableKeys.show, label: 'Show'},
+      {icon: <EditOutlined />, key: tableKeys.edit, label: 'Edit'},
+      {icon: <DeleteOutlined />, key: tableKeys.delete, label: 'Delete'}
+    ],
+    onClick: handelClick
+  }
 }
 
 export default function CrudDataTable({ config }) {
-  return <DataTable config={config} DropDownRowMenu={DropDownRowMenu} AddNewItem={AddNewItem} />;
+  return <DataTable config={config} dropDownRowMenu={dropDownRowMenu} AddNewItem={AddNewItem} />;
 }

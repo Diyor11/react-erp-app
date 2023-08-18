@@ -32,7 +32,7 @@ export default function DeleteModal({ config }) {
 
       setDisplayItem(labels);
     }
-  }, [isSuccess, current]);
+  }, [isSuccess, current, dispatch]);
 
   const handleOk = () => {
     const id = current._id;

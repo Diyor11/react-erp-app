@@ -60,7 +60,7 @@ const crudReducer = (state = INITIAL_STATE, action) => {
           isSuccess: false,
         },
       };
-    case actionTypes.REQUEST_SUCCESS:
+    case actionTypes.REQUEST_SUCCESS:      
       return {
         ...state,
         [keyState]: {

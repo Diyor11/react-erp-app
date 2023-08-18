@@ -1,41 +1,35 @@
 import React from 'react';
-import { Dropdown, Menu, Table } from 'antd';
+import { Dropdown, Table } from 'antd';
 
 import { request } from '../../request';
 import useFetch from '../../hooks/useFetch';
 
 import { EllipsisOutlined, EyeOutlined, EditOutlined, DeleteOutlined } from '@ant-design/icons';
 
-function DropDownRowMenu({ row }) {
-  const Show = () => {};
-  function Edit() {}
-  function Delete() {}
-  return (
-    <Menu style={{ width: 130 }}>
-      <Menu.Item icon={<EyeOutlined />} onClick={Show}>
-        Show
-      </Menu.Item>
-      <Menu.Item icon={<EditOutlined />} onClick={Edit}>
-        Edit
-      </Menu.Item>
-      <Menu.Item icon={<DeleteOutlined />} onClick={Delete}>
-        Delete
-      </Menu.Item>
-    </Menu>
-  );
-}
+
+const dropdownItems = [
+  {icon: <EyeOutlined />, key: 'show', label: 'Show'},
+  {icon: <EditOutlined />, key: 'edit', label: 'Edit'},
+  {icon: <DeleteOutlined />, key: 'delete', label: 'Delete', danger: true},
+]
 
 export default function RecentTable({ ...props }) {
   let { entity, dataTableColumns, title } = props;
   dataTableColumns = [
     ...dataTableColumns,
     {
-      title: '',
-      render: (row) => (
-        <Dropdown menu={DropDownRowMenu({ row })} trigger={['click']}>
-          <EllipsisOutlined style={{ cursor: 'pointer', fontSize: '24px' }} />
-        </Dropdown>
-      ),
+      title: 'ACtions',
+      render: (row) => {
+        const click = e => {
+          // console.log(e.key, row.client)
+        }
+
+        return (
+          <Dropdown menu={{items: dropdownItems, onClick: click}} trigger={['click']}>
+            <EllipsisOutlined style={{ cursor: 'pointer', fontSize: '24px' }} />
+          </Dropdown>
+        )
+      },
     },
   ];
 

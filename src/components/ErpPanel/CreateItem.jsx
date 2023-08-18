@@ -40,7 +40,7 @@ export default function CreateItem({ config, CreateForm }) {
     let subTotal = 0;
 
     if (items) {
-      items.map((item) => {
+      items.forEach((item) => {
         if (item) {
           if (item.quantity && item.price) {
             let total = item['quantity'] * item['price'];
@@ -61,7 +61,7 @@ export default function CreateItem({ config, CreateForm }) {
       createPanel.close();
       dispatch(erp.list({ entity }));
     }
-  }, [isSuccess]);
+  }, [isSuccess, createPanel, dispatch, entity, form]);
 
   const onSubmit = (fieldsValue) => {
     if (fieldsValue) {

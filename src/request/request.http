@@ -1,0 +1,8 @@
+post https://erp-crm.idurarapp.com/api/login
+Content-Type: application/json
+header: {}
+
+{
+    "email": "test@gmail.com",
+    "password": "admin"
+}

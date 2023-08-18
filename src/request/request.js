@@ -43,7 +43,10 @@ const request = {
       successHandler(response, {
         notifyOnSuccess: true,
         notifyOnFailed: true,
-      });
+      })
+
+      console.log(response);
+      
       return response.data;
     } catch (error) {
       return errorHandler(error);

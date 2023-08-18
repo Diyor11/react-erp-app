@@ -9,40 +9,13 @@ import { ArrowUpOutlined } from '@ant-design/icons';
 import { DashboardLayout } from '../../layout';
 import RecentTable from '../../components/RecentTable';
 import CardList from './CardList';
-import PreViewbox from './PreViewbox';
+import PreviewList from '../../components/PreviewList';
 
 const cardsData = [
   {title: 'Invoice', tagColor: 'cyan', prefix: 'This month', tagContent: '34 000 $' },
   {title: 'Quote', tagColor: 'purple', prefix: 'This month', tagContent: '34 000 $' },
   {title: 'Payment', tagColor: 'green', prefix: 'This month', tagContent: '34 000 $' },
   {title: 'Due Balance', tagColor: 'red', prefix: 'Not Paid', tagContent: '34 000 $' },
-]
-
-const previewData = [
-  {title: 'Invoice Preview', states: [
-    {tag: 'Draft', color: 'grey', value: 3},
-    {tag: 'Pending', color: 'bleu', value: 5},
-    {tag: 'Not Paid', color: 'orange', value: 12},
-    {tag: 'Overdue', color: 'red', value: 6},
-    {tag: 'Partially Paid', color: 'cyan', value: 8},
-    {tag: 'Paid', color: 'green', value: 55},
-  ]},
-  {title: 'Quote Preview', states: [
-    {tag: 'Draft', color: 'grey', value: 3},
-    {tag: 'Pending', color: 'bleu', value: 5},
-    {tag: 'Not Paid', color: 'orange', value: 12},
-    {tag: 'Overdue', color: 'red', value: 6},
-    {tag: 'Partially Paid', color: 'cyan', value: 8},
-    {tag: 'Paid', color: 'green', value: 55},
-  ]},
-  {title: 'Offer Preview', states: [
-    {tag: 'Draft', color: 'grey', value: 3},
-    {tag: 'Pending', color: 'bleu', value: 5},
-    {tag: 'Not Paid', color: 'orange', value: 12},
-    {tag: 'Overdue', color: 'red', value: 6},
-    {tag: 'Partially Paid', color: 'cyan', value: 8},
-    {tag: 'Paid', color: 'green', value: 55},
-  ]}
 ]
 
 export default function Dashboard() {
@@ -57,24 +30,11 @@ export default function Dashboard() {
         <Col
           className="gutter-row"
           xs={{ span: 24 }}
-          sm={{ span: 24 }}
-          md={{ span: 24 }}
           lg={{ span: 18 }}
         >
           <div className="whiteBox shadow" style={{ minHeight: '380px' }}>
             <Row className="pad10" gutter={[0, 0]}>
-              {previewData.map((data, index) => (
-                <Col
-                  key={index}
-                  className="gutter-row"
-                  xs={{ span: 24 }}
-                  sm={{ span: 24 }}
-                  md={{ span: 8 }}
-                  lg={{ span: 8 }}
-                >
-                  <PreViewbox {...data} />
-              </Col>
-              ))}
+              <PreviewList entity='states' />
             </Row>
           </div>
         </Col>
@@ -82,8 +42,6 @@ export default function Dashboard() {
         <Col
           className="gutter-row"
           xs={{ span: 0 }}
-          sm={{ span: 0 }}
-          md={{ span: 0 }}
           lg={{ span: 6 }}
         >
           <div className="whiteBox shadow" style={{ height: '380px' }}>
@@ -116,8 +74,6 @@ export default function Dashboard() {
         <Col
           className="gutter-row"
           xs={{ span: 24 }}
-          sm={{ span: 24 }}
-          md={{ span: 12 }}
           lg={{ span: 12 }}
         >
           <div className="whiteBox shadow">
@@ -128,8 +84,6 @@ export default function Dashboard() {
         <Col
           className="gutter-row"
           xs={{ span: 24 }}
-          sm={{ span: 24 }}
-          md={{ span: 12 }}
           lg={{ span: 12 }}
         >
           <div className="whiteBox shadow">
