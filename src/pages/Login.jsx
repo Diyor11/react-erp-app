@@ -30,7 +30,7 @@ const SideContent = () => {
       className="sideContent"
     >
       <div style={{ width: '100%' }}>
-        <img src={logo} alt="Logo" style={{ margin: '0 auto 40px', display: 'block' }} />
+        {*/<img src={logo} alt="Logo" style={{ margin: '0 auto 40px', display: 'block' }} />*/}
         <div className="space40"></div>
         <Title level={3}>Manage your company with :</Title>
         <div className="space20"></div>
