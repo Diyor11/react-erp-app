@@ -29,7 +29,7 @@ export default function ErpPanel({ config, CreateForm, UpdateForm, dataTableDrop
   return (
     <>
       <Visibility isVisible={dataTableList.isOpen}>
-        <DataTable config={config} DataTableDropMenu={dataTableDropMenu} />
+        <DataTable config={config} dataTableDropMenu={dataTableDropMenu} />
       </Visibility>
       <Visibility isVisible={read.isOpen}>
         <ReadItem config={config} />

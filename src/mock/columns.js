@@ -80,6 +80,7 @@ export const createInviceTable = (moneyRowFormatter) => {
         {
           title: 'Client',
           dataIndex: 'client',
+          render: (client) => client.company
         },
         {
           title: 'Date',

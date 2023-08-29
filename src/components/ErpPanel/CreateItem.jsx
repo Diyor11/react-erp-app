@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Form, Divider } from 'antd';
 
-import { Button, Row, Statistic, Tag } from 'antd';
+import { Button, Tag } from 'antd';
 import {PageHeader} from '@ant-design/pro-layout'
 
 import { useSelector, useDispatch } from 'react-redux';
@@ -64,6 +64,7 @@ export default function CreateItem({ config, CreateForm }) {
   }, [isSuccess, createPanel, dispatch, entity, form]);
 
   const onSubmit = (fieldsValue) => {
+    console.log(fieldsValue)
     if (fieldsValue) {
       // if (fieldsValue.expiredDate) {
       //   const newDate = fieldsValue["expiredDate"].format("DD/MM/YYYY");
@@ -100,7 +101,7 @@ export default function CreateItem({ config, CreateForm }) {
         title={CREATE_ENTITY}
         ghost={false}
         tags={<Tag color="volcano">Draft</Tag>}
-        // subTitle="This is create page"
+        subTitle="This is create page"
         extra={[
           <Button
             key={`${uniqueId()}`}

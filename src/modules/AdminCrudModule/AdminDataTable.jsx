@@ -24,53 +24,67 @@ function AddNewItem({ config }) {
     </Button>
   );
 }
-function DropDownRowMenu({ row }) {
-  const dispatch = useDispatch();
-  const { crudContextAction } = useCrudContext();
+function dropDownRowMenu({ row, dispatch, crudContextAction }) {
   const { panel, collapsedBox, modal, advancedBox, readBox, editBox } = crudContextAction;
-  const item = useSelector(selectItemById(row._id));
-  const Show = () => {
-    dispatch(crud.currentItem({ data: item }));
+  const tableKeys = {show: 'admin-table-show', edit: 'admin-table-edit', delete: 'admin-table-delete', payment: 'in-table-payment', updatePassword: 'admin-table-updtae-password'}
+
+  const show = () => {
+    dispatch(crud.currentItem({ data: row }));
     panel.open();
     collapsedBox.open();
     readBox.open();
   };
-  function Edit() {
-    dispatch(crud.currentItem({ data: item }));
-    dispatch(crud.currentAction({ actionType: 'update', data: item }));
+
+  function edit() {
+    dispatch(crud.currentItem({ data: row }));
+    dispatch(crud.currentAction({ actionType: 'update', data: row }));
     editBox.open();
     panel.open();
     collapsedBox.open();
   }
-  function UpdatePassword() {
-    dispatch(crud.currentItem({ data: item }));
-    dispatch(crud.currentAction({ actionType: 'update', data: item }));
+
+  function updatePassword() {
+    dispatch(crud.currentItem({ data: row }));
+    dispatch(crud.currentAction({ actionType: 'update', data: row }));
     advancedBox.open();
     panel.open();
     collapsedBox.open();
   }
-  function Delete() {
-    dispatch(crud.currentAction({ actionType: 'delete', data: item }));
+  function _delete() {
+    dispatch(crud.currentAction({ actionType: 'delete', data: row }));
     modal.open();
   }
-  return (
-    <Menu style={{ minWidth: 130 }}>
-      <Menu.Item key={`${uniqueId()}`} icon={<EyeOutlined />} onClick={Show}>
-        Show
-      </Menu.Item>
-      <Menu.Item key={`${uniqueId()}`} icon={<EditOutlined />} onClick={Edit}>
-        Edit
-      </Menu.Item>
-      <Menu.Item key={`${uniqueId()}`} icon={<LockOutlined />} onClick={UpdatePassword}>
-        Update Password
-      </Menu.Item>
-      <Menu.Item key={`${uniqueId()}`} icon={<DeleteOutlined />} onClick={Delete}>
-        Delete
-      </Menu.Item>
-    </Menu>
-  );
+
+  const handelClick = (e) => {
+    switch (e.key) {
+      case tableKeys.show:
+        show()
+        break;
+      case tableKeys.edit:
+        edit()
+        break;
+      case tableKeys.delete:
+        _delete()
+        break;
+      case tableKeys.updatePassword:
+        updatePassword()
+        break;
+      default:
+        break;
+    }
+  }
+
+  return {
+    items: [
+      {icons: <EyeOutlined />, label: 'Show', key: tableKeys.show},
+      {icons: <EditOutlined />, label: 'Edit', key: tableKeys.edit},
+      {icons: <LockOutlined />, label: 'Update password', key: tableKeys.updatePassword},
+      {icons: <DeleteOutlined />, label: 'Delete', key: tableKeys.delete},
+    ],
+    onClick: handelClick
+  }
 }
 
 export default function AdminCrudModule({ config }) {
-  return <DataTable config={config} DropDownRowMenu={DropDownRowMenu} AddNewItem={AddNewItem} />;
+  return <DataTable config={config} dropDownRowMenu={dropDownRowMenu} AddNewItem={AddNewItem} isCrud={true} />;
 }

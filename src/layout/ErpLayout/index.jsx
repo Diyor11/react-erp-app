@@ -6,7 +6,7 @@ import { Layout } from 'antd';
 
 const { Content } = Layout;
 
-export default function ErpLayout({ children, config }) {
+export default function ErpLayout({ children }) {
   return (
     <ErpContextLayout>
       <Layout className="site-layout">

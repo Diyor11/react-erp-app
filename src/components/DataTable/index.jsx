@@ -10,7 +10,7 @@ import { selectListItems } from '../../redux/crud/selectors';
 import uniqueId from '../../utils/uinqueId';
 import { useCrudContext } from '../../context/crud';
 
-export default function DataTable({ config, dropDownRowMenu, AddNewItem }) {
+export default function DataTable({ config, dropDownRowMenu, AddNewItem, isCrud }) {
   let { entity, dataTableColumns, dataTableTitle } = config;
 
   const { crudContextAction } = useCrudContext();
@@ -24,7 +24,7 @@ export default function DataTable({ config, dropDownRowMenu, AddNewItem }) {
         // console.log(row)
         // {items: [{label: 'show', key: '1'}]}
         return(
-          <Dropdown menu={dropDownRowMenu(row, crudContextAction, dispatch)} trigger={['click']}>
+          <Dropdown menu={dropDownRowMenu({row, crudContextAction, dispatch})} trigger={['click']}>
             <EllipsisOutlined style={{ cursor: 'pointer', fontSize: '24px' }} />
           </Dropdown>
         )

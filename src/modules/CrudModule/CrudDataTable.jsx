@@ -24,7 +24,7 @@ function AddNewItem({ config }) {
     </Button>
   );
 }
-function dropDownRowMenu(row, crudContextAction, dispatch) {
+function dropDownRowMenu({row, crudContextAction, dispatch}) {
   const { panel, collapsedBox, modal, readBox, editBox } = crudContextAction;
   const tableKeys = {show: 'cr-table-show', edit: 'cr-table-edit', delete: 'cr-table-delete'}
 

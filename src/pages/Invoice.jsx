@@ -26,7 +26,7 @@ export default function Invoice() {
     PANEL_TITLE,
     dataTableTitle,
     ENTITY_NAME,
-    CREATE_ENTITY,
+  CREATE_ENTITY,
     ADD_NEW_ENTITY,
     UPDATE_ENTITY,
     DATATABLE_TITLE,

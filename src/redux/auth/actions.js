@@ -12,7 +12,7 @@ export const login =
     });
     const data = await authService.login({ loginData });
 
-    console.log(data);
+    // console.log(data);
     
     if (data.success === true) {
       window.localStorage.setItem('isLoggedIn', true);

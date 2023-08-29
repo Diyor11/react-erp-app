@@ -35,14 +35,14 @@ export default function DataTable({ config, dataTableDropMenu }) {
   const dispatch = useDispatch();
   dataTableColumns = [
     ...dataTableColumns,
-    // {
-    //   title: 'Actions',
-    //   render: (row) => (
-    //     <Dropdown menu={dataTableDropMenu({ row, entity, dispatch, erpContextAction })} trigger={['click']}>
-    //       <EllipsisOutlined style={{ cursor: 'pointer', fontSize: '24px' }} />
-    //     </Dropdown>
-    //   ),
-    // },
+    {
+      title: 'Actions',
+      render: (row) => (
+        <Dropdown menu={dataTableDropMenu({ row, entity, dispatch, erpContextAction })} trigger={['click']}>
+          <EllipsisOutlined style={{ cursor: 'pointer', fontSize: '24px' }} />
+        </Dropdown>
+      ),
+    },
   ];
 
   const { result: listResult, isLoading: listIsLoading } = useSelector(selectListItems);

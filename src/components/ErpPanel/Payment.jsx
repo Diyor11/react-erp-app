@@ -52,9 +52,9 @@ export default function Payment({ config }) {
     }
   }, [currentItem]);
 
-  useEffect(() => {
-    console.info('itemslist', itemslist);
-  }, [itemslist]);
+  // useEffect(() => {
+  //   console.info('itemslist', itemslist);
+  // }, [itemslist]);
 
   return (
     <>

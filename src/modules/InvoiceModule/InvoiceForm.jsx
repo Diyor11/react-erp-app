@@ -11,7 +11,7 @@ import ItemRow from '../../components/ErpPanel/ItemRow';
 
 import MoneyInputFormItem from '../../components/MoneyInputFormItem';
 
-export default function InvoiceForm({ subTotal = 0, current = null }) {
+export default function InvoiceForm({ subTotal = 0, current = null, update = false }) {
   const [total, setTotal] = useState(0);
   const [taxRate, setTaxRate] = useState(0);
   const [taxTotal, setTaxTotal] = useState(0);
@@ -192,7 +192,7 @@ export default function InvoiceForm({ subTotal = 0, current = null }) {
           <Col className="gutter-row" span={5}>
             <Form.Item>
               <Button type="primary" htmlType="submit" icon={<PlusOutlined />} block>
-                Save Invoice
+                {update ? 'Update':'Save'} Invoice
               </Button>
             </Form.Item>
           </Col>

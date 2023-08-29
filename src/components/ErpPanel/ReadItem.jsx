@@ -87,11 +87,13 @@ export default function ReadItem({ config }) {
     year: 0,
   });
 
+  console.log(currentErp)
+
   useEffect(() => {
     if (currentResult) {
       const { items } = currentResult;
 
-      setItemsList(items);
+      setItemsList(items || []);
       setCurrentErp(currentResult);
     }
   }, [currentResult]);
@@ -107,7 +109,7 @@ export default function ReadItem({ config }) {
         title={`${ENTITY_NAME} # ${currentErp.number}/${currentErp.year || ''}`}
         ghost={false}
         tags={<Tag color="volcano">{currentErp.paymentStatus || currentErp.status}</Tag>}
-        // subTitle="This is cuurent erp page"
+        subTitle="This is cuurent erp page"
         extra={[
           <Button
             key={`${uniqueId()}`}
@@ -150,7 +152,7 @@ export default function ReadItem({ config }) {
         }}
       >
         <Row>
-          <Statistic title="Status" value={currentErp.status} />
+          <Statistic title="Status" value={currentErp.status} className='c-case' />
           <Statistic
             title="SubTotal"
             value={moneyFormatter({ amount: currentErp.subTotal })}

@@ -7,13 +7,9 @@ import {
   FilePdfOutlined,
   CreditCardOutlined,
 } from '@ant-design/icons';
-import { useSelector, useDispatch } from 'react-redux';
 import { erp } from '../../redux/erp/actions';
-import { selectListItems, selectItemById } from '../../redux/erp/selectors';
-import { useErpContext } from '../../context/erp';
 
 import { DOWNLOAD_BASE_URL } from '../../config/serverApiConfig';
-import uniqueId from '../../utils/uinqueId';
 
 export default function dataTableDropMenu({ row, entity, dispatch, erpContextAction }) {
   const { readPanel, updatePanel, recordPanel, modal } = erpContextAction;
@@ -39,25 +35,6 @@ export default function dataTableDropMenu({ row, entity, dispatch, erpContextAct
   function download() {
     window.open(`${DOWNLOAD_BASE_URL}${entity}/${entity}-${row._id}.pdf`, '_blank');
   }
-  // return (
-  //   <Menu style={{ minWidth: 130 }}>
-  //     <Menu.Item key={`${uniqueId()}`} icon={<EyeOutlined />} onClick={Read}>
-  //       Show
-  //     </Menu.Item>
-  //     <Menu.Item key={`${uniqueId()}`} icon={<CreditCardOutlined />} onClick={RecordPayment}>
-  //       Record Payment
-  //     </Menu.Item>
-  //     <Menu.Item key={`${uniqueId()}`} icon={<EditOutlined />} onClick={Edit}>
-  //       Edit
-  //     </Menu.Item>
-  //     <Menu.Item key={`${uniqueId()}`} icon={<FilePdfOutlined />} onClick={Download}>
-  //       Download
-  //     </Menu.Item>
-  //     <Menu.Item key={`${uniqueId()}`} icon={<DeleteOutlined />} onClick={Delete}>
-  //       Delete
-  //     </Menu.Item>
-  //   </Menu>
-  // );
 
   const handelClick = (e) => {
     switch (e.key) {
@@ -85,7 +62,7 @@ export default function dataTableDropMenu({ row, entity, dispatch, erpContextAct
     items: [
       {icons: <EyeOutlined />, label: 'Show', key: tableKeys.show},
       {icons: <CreditCardOutlined />, label: 'Record Payment', key: tableKeys.payment},
-      {icons: <EyeOutlined />, label: 'Edit', key: tableKeys.edit},
+      {icons: <EditOutlined />, label: 'Edit', key: tableKeys.edit},
       {icons: <FilePdfOutlined />, label: 'Download', key: tableKeys.download},
       {icons: <DeleteOutlined />, label: 'Delete', key: tableKeys.delete},
     ],
