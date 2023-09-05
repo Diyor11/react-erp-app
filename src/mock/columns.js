@@ -364,5 +364,5 @@ export const adminTable = [
     { title: 'Name', dataIndex: 'name' },
     { title: 'Surname', dataIndex: 'surname' },
     { title: 'Email', dataIndex: 'email' },
-    { title: "Role d'utilisateur", dataIndex: ['role', 'displayName'] },
+    { title: "Role", dataIndex: 'role', render: (role) => role?.codeName || 'admin'},
 ];

@@ -6,7 +6,8 @@ import {
   AppstoreOutlined
 } from '@ant-design/icons';
 
-import photo from '../../style/images/photo.png';
+import photo from '../../style/images/avatar.jfif';
+
 import {getProfileMenu} from '../../mock'
 
 export default function HeaderContent() {

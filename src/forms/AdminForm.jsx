@@ -3,9 +3,10 @@ import { Form, Input } from 'antd';
 
 export default function AdminForm({ isUpdateForm = false }) {
   return (
-    <>
+    <div className='admin-form'>
       <Form.Item
         label="Name"
+        name='name'
         rules={[
           {
             required: true,
@@ -17,6 +18,7 @@ export default function AdminForm({ isUpdateForm = false }) {
       </Form.Item>
       <Form.Item
         label="Surname"
+        name="surname"
         rules={[
           {
             required: true,
@@ -28,6 +30,7 @@ export default function AdminForm({ isUpdateForm = false }) {
       </Form.Item>
       <Form.Item
         label="E-mail"
+        name="email"
         rules={[
           {
             required: true,
@@ -41,6 +44,7 @@ export default function AdminForm({ isUpdateForm = false }) {
       {!isUpdateForm && (
         <Form.Item
           label="Password"
+          name="password"
           id='password'
           rules={[
             {
@@ -54,6 +58,7 @@ export default function AdminForm({ isUpdateForm = false }) {
       )}
       <Form.Item
         label="Role"
+        name="role"
         rules={[
           {
             required: true,
@@ -63,6 +68,6 @@ export default function AdminForm({ isUpdateForm = false }) {
       >
         <SelectAsync entity={'role'} displayLabels={['displayName']}></SelectAsync>
       </Form.Item>
-    </>
+    </div>
   );
 }

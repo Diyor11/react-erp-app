@@ -46,6 +46,10 @@ export default function DataTable({ config, dropDownRowMenu, AddNewItem, isCrud 
     dispatch(crud.list({ entity }));
   }, [dispatch, entity]);
 
+  // useEffect(() => {
+  //   return () => dispatch(crud.resetState())
+  // }, [dispatch])
+
   return (
     <>
       <PageHeader

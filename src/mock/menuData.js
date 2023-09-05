@@ -6,7 +6,7 @@ import {
     LogoutOutlined,
   } from '@ant-design/icons';
 import {Avatar} from 'antd'
-import photo from '../style/images/photo.png';
+import photo from '../style/images/avatar.jfif';
 
 export function getMenuItem(label, key, icon, children, type) {
     return {

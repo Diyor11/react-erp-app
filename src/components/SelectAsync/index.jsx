@@ -33,7 +33,7 @@ export default function SelectAsync({
       setCurrentValue(value[outputValue] || value); // set nested value or value
       onChange(value[outputValue] || value);
     }
-  }, [value]);
+  }, [value, onChange, outputValue]);
 
   return (
     <Select

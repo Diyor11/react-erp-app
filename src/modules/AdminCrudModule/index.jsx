@@ -23,7 +23,7 @@ import { selectCurrentItem } from '../../redux/crud/selectors';
 function SidePanelTopContent({ config, formElements }) {
   const { crudContextAction, state } = useCrudContext();
   const { entityDisplayLabels } = config;
-  const { panel, advancedBox, modal, readBox, editBox } = crudContextAction;
+  const {  advancedBox, modal, editBox } = crudContextAction;
 
   const { isReadBoxOpen, isEditBoxOpen, isAdvancedBoxOpen } = state;
   const { result: currentItem } = useSelector(selectCurrentItem);
@@ -134,7 +134,7 @@ function AdminCrudModule({ config, createForm, updateForm }) {
 
   useLayoutEffect(() => {
     dispatch(crud.resetState());
-  }, []);
+  }, [dispatch]);
 
   return (
     <CrudLayout

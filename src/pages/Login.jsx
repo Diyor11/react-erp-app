@@ -9,7 +9,7 @@ import { selectAuth } from '../redux/auth/selectors';
 import LoginForm from '../forms/LoginForm';
 import AuthLayout from '../layout/AuthLayout';
 
-import logo from '../style/images/logo.png';
+import logo from '../style/images/avatar.jfif';
 import logo1 from '../style/images/logo1.png';
 import logo2 from '../style/images/logo2.png';
 import logo3 from '../style/images/logo3.png';
